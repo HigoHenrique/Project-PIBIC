@@ -1,0 +1,19 @@
+:root {
+  --cor-primary-1 : #690013;
+  --cor-primary-2 : #830018;
+  --cor-primary-3: #9C001C;
+  --cor-primary-4: #A31111;
+  --cor-secundary-1: #9D7628;
+  --cor-secundary-2: #C4A251;
+  --cor-secundarty-3: #C8B06E;
+  --cor-font-1: #36000A;
+  --cor-font-2: #4f000d;
+  --cor-bg-1:  #00000012;
+  --cor-bg-2: #00000060;
+  --cor-bg-3: #00000090;
+}
+
+body{
+  letter-spacing: 3.13px;
+  font-family: 'Roboto', sans-serif;
+}
