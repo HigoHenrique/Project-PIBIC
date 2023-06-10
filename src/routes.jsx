@@ -8,8 +8,8 @@ export default function Router() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Home/>} />
-                <Route path='/login' element={<Login/>} />
+                <Route path='/' element={<Login/>} />
+                <Route path='/home' element={<Home/>} />
                 <Route path='/form' element={<Form/>} />
             </Routes>
         </BrowserRouter>
