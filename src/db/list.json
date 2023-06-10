@@ -1,0 +1,62 @@
+[
+    {
+        "nome":"Higo Henrique da Silva",
+        "matricula":"00000424224",
+        "endereco":"Rua do príncipe, 608",
+        "cpf":"52759629082",
+        "rg":"384563764",
+        "telefone":"8198882766",
+        "curso":"Sistema para Internet",
+        "email":"higo@gmail.com",
+        "emailProfessor":"professor1@unicap.br",
+        "curriculo":"http://drive.com/higo/curriculo"
+    },
+    {
+        "nome":"Edson Tiago Martins",
+        "matricula":"00000520411",
+        "endereco":"Rua Olímpio de Arroxelas Galvão, 780",
+        "cpf":"11692723472",
+        "rg":"294589041",
+        "telefone":"81993164296",
+        "curso":"Sistema para Internet",
+        "email":"edson_martins@consultorialk.com.br",
+        "emailProfessor":"professor1@unicap.br",
+        "curriculo":"http://drive.com/edson/curriculo"
+    },
+    {
+        "nome":"Elias Raul Castro",
+        "matricula":"00000521700",
+        "endereco":"Rua Olímpio de Arroxelas Galvão, 780",
+        "cpf":"49754962405",
+        "rg":"312466109",
+        "telefone":"81993164296",
+        "curso":"Sistema para Internet",
+        "email":"elias.raul.castro@oxiteno.com",
+        "emailProfessor":"professor1@unicap.br",
+        "curriculo":"http://drive.com/elias/curriculo"
+    },
+    {
+        "nome":"Theo Leandro Thiago Nunes",
+        "matricula":"00000522101",
+        "endereco":"Rua Costa Dias, 355",
+        "cpf":"65033484443",
+        "rg":"466941316",
+        "telefone":"81994454337",
+        "curso":"Sistema para Internet",
+        "email":"theo_nunes@rabelloadvogados.com.br",
+        "emailProfessor":"professor2@unicap.br",
+        "curriculo":"http://drive.com/theo/curriculo"
+    },
+    {
+        "nome":"Rebeca Luzia Eliane Melo",
+        "matricula":"00000520713",
+        "endereco":"1ª Travessa Córrego do Jenipapo, 152",
+        "cpf":"45460535417",
+        "rg":"501849713",
+        "telefone":"81993632873",
+        "curso":"Sistema para Internet",
+        "email":"rebecaluziamelo@dpi.indl.com.br",
+        "emailProfessor":"professor2@unicap.br",
+        "curriculo":"http://drive.com/rebeca/curriculo"
+    }
+]
