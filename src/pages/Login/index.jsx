@@ -82,7 +82,7 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="Senha"
+              label="Matricula"
               type="password"
               id="password"
               autoComplete="current-password"
