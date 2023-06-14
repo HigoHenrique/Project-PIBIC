@@ -15,7 +15,7 @@ export default function Home() {
         fetch('https://pibicdb-barbosaerick88.b4a.run/alunos/')
             .then(response => response.json())
             .then(data => {
-                const filteredAlunos = data.filter(aluno => aluno.email === 'exemplo@email.com');
+                const filteredAlunos = data.filter(aluno => aluno.emailProfessor === 'professor@email.com');
                 setAlunos(filteredAlunos);
             })
             .catch(error => {
