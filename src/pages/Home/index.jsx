@@ -12,7 +12,7 @@ export default function Home() {
     const [alunos, setAlunos] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('https://pibicdb-barbosaerick88.b4a.run/alunos/')
+        fetch('https://pibicdb.onrender.com/alunos')
             .then(response => response.json())
             .then(data => {
                 const filteredAlunos = data.filter(aluno => aluno.emailProfessor === 'professor@email.com');

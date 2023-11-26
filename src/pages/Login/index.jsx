@@ -21,7 +21,7 @@ export default function SignIn() {
   const [invalidMatricula, setInvalidMatricula] = React.useState(false);
 
   const handleClick = async () => {
-    const response = await fetch("https://pibicdb-barbosaerick88.b4a.run/alunos/");
+    const response = await fetch("https://pibicdb.onrender.com/alunos");
     const data = await response.json();
 
     const email = document.getElementById("email").value;
