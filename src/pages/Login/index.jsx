@@ -14,6 +14,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logoUnicap from "./logo-1-unicap.png";
 import { useNavigate } from "react-router-dom";
 
+import "./styles.css";
+
 const theme = createTheme();
 
 export default function SignIn() {
@@ -27,7 +29,9 @@ export default function SignIn() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const aluno = data.find((aluno) => aluno.email === email && aluno.matricula === password);
+    const aluno = data.find(
+      (aluno) => aluno.email === email && aluno.matricula === password
+    );
 
     if (aluno) {
       navigateTo("/home");
@@ -41,82 +45,89 @@ export default function SignIn() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <img src={logoUnicap} alt="Logo da UNICAP" />
-          <Typography
-            component="h1"
-            variant="h5"
-            sx={{ color: "var(--cor-secundary-1)" }}
-          >
-            PIBIC
-          </Typography>
+    <main id="main-container">
+      <ThemeProvider theme={theme}>
+        <div className="container">
+          <CssBaseline />
           <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              background: "white",
+              width: 450,
+              padding: 5,
+              borderRadius: 5,
+              opacity: 0.9
+              
+            }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              error={invalidMatricula}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Matricula"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              error={invalidMatricula}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Lembrar do e-mail"
-            />
+            <img src={logoUnicap} alt="Logo da UNICAP" />
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{ color: "var(--cor-secundary-1)" }}
+            >
+              PIBIC
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                error={invalidMatricula}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Matricula"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                error={invalidMatricula}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Lembrar do e-mail"
+              />
 
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Esqueceu a senha ?
-                </Link>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Esqueceu a senha ?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/form" variant="body2">
+                    {"Não possui conta ? Cadastre-se"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link href="/form" variant="body2">
-                  {"Não possui conta ? Cadastre-se"}
-                </Link>
-              </Grid>
-            </Grid>
+            </Box>
+            <Button
+              onClick={handleClick}
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, background: "var(--cor-primary-1)" }}
+            >
+              Entrar
+            </Button>
           </Box>
-          <Button
-            onClick={handleClick}
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, background: "var(--cor-primary-1)" }}
-          >
-            Entrar
-          </Button>
-        </Box>
-      </Container>
-    </ThemeProvider>
+        </div>
+      </ThemeProvider>
+    </main>
   );
 }
