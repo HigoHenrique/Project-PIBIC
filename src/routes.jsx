@@ -1,16 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Form from './pages/Form/index'
-import Home from './pages/Home/index'
-import Login from './pages/Login/index'
+import ChoseLogin from './pages/ChoseLogin/index'
+import HomeAdm from './pages/HomeAdm'
+import Login from './pages/Login'
+import Aluno from './pages/Aluno'
+import HomeProf from './pages/HomeProf'
 
 
 export default function Router() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Login/>} />
-                <Route path='/home' element={<Home/>} />
-                <Route path='/form' element={<Form/>} />
+                <Route path='/' element={<ChoseLogin/>} />
+                <Route path='/homeAdm' element={<HomeAdm/>} />
+                <Route path='/login' element={<Login/>} />
+                <Route path='/aluno' element={<Aluno/>} />
+                <Route path='/homeProf' element={<HomeProf/>} />
             </Routes>
         </BrowserRouter>
     )

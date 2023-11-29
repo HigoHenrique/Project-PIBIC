@@ -1,43 +1,30 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import logoUnicap from "./logo-1-unicap.png";
+import logoUnicap from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
+import useAutenticate from "../../hooks/useAutenticate";
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function Login() {
   const navigateTo = useNavigate();
+  const {login} = useAutenticate();
   const [invalidMatricula, setInvalidMatricula] = React.useState(false);
 
   const handleClick = async () => {
-    const response = await fetch("https://pibicdb.onrender.com/alunos");
-    const data = await response.json();
-
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-
-    const aluno = data.find(
-      (aluno) => aluno.email === email && aluno.matricula === password
-    );
-
-    if (aluno) {
-      navigateTo("/home");
-    } else {
-      setInvalidMatricula(true);
-    }
+  
+    login(email, password, setInvalidMatricula)
   };
 
   const handleSubmit = (event) => {
@@ -58,8 +45,7 @@ export default function SignIn() {
               width: 450,
               padding: 5,
               borderRadius: 5,
-              opacity: 0.9
-              
+              opacity: 0.9,
             }}
           >
             <img src={logoUnicap} alt="Logo da UNICAP" />
@@ -92,7 +78,7 @@ export default function SignIn() {
                 required
                 fullWidth
                 name="password"
-                label="Matricula"
+                label="Senha"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -102,19 +88,6 @@ export default function SignIn() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Lembrar do e-mail"
               />
-
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Esqueceu a senha ?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/form" variant="body2">
-                    {"Não possui conta ? Cadastre-se"}
-                  </Link>
-                </Grid>
-              </Grid>
             </Box>
             <Button
               onClick={handleClick}
