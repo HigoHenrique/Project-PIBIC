@@ -9,7 +9,7 @@ export default function HomeAdm(){
     curso: '',
   });
 
-  // Função para carregar os dados dos professores da API
+  
   const carregarProfessores = async () => {
     try {
       const response = await fetch('https://pibicdb.onrender.com/professores');
