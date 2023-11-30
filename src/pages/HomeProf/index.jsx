@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css'
+import { Container } from '@mui/material';
 
 
 const API_URL = 'https://pibicdb.onrender.com/alunos';
@@ -89,7 +90,9 @@ export default function HomeProf() {
   };
 
   return (
-    <div>
+    <Container sx={{
+        margin: 20
+    }}>
       <h1>Lista de Alunos</h1>
       <table>
         <thead>
@@ -250,7 +253,7 @@ export default function HomeProf() {
           Adicionar
         </button>
       </form>
-    </div>
+    </Container>
   );
 }
 

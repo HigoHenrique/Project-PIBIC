@@ -1,32 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import {
+  Container
+} from "@mui/material";
 
-export default function HomeAdm(){
+import ProfListCell from "../../components/ProfListCell";
+
+export default function HomeAdm() {
   const [professores, setProfessores] = useState([]);
   const [novoProfessor, setNovoProfessor] = useState({
-    nome: '',
-    email: '',
-    matricula: '',
-    curso: '',
+    nome: "",
+    email: "",
+    matricula: "",
+    curso: "",
   });
 
-  
   const carregarProfessores = async () => {
     try {
-      const response = await fetch('https://pibicdb.onrender.com/professores');
+      const response = await fetch("https://pibicdb.onrender.com/professores");
       const data = await response.json();
       setProfessores(data);
     } catch (error) {
-      console.error('Erro ao carregar os dados dos professores:', error);
+      console.error("Erro ao carregar os dados dos professores:", error);
     }
   };
 
-  // Função para adicionar um novo professor
   const adicionarProfessor = async () => {
     try {
-      const response = await fetch('https://pibicdb.onrender.com/professores', {
-        method: 'POST',
+      const response = await fetch("https://pibicdb.onrender.com/professores", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(novoProfessor),
       });
@@ -34,45 +37,37 @@ export default function HomeAdm(){
         // Se o professor foi adicionado com sucesso, recarrega a lista de professores
         carregarProfessores();
         // Limpa os campos do novo professor após adicionar
-        setNovoProfessor({ nome: '', email: '', matricula: '', curso: '' });
+        setNovoProfessor({ nome: "", email: "", matricula: "", curso: "" });
       } else {
-        console.error('Erro ao adicionar professor');
+        console.error("Erro ao adicionar professor");
       }
     } catch (error) {
-      console.error('Erro ao adicionar professor:', error);
+      console.error("Erro ao adicionar professor:", error);
     }
   };
 
-  // Carrega os dados dos professores quando o componente é montado
   useEffect(() => {
     carregarProfessores();
+
+    console.log(professores);
   }, []);
 
   return (
-    <div>
+    <Container>
       <h1>Lista de Professores</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Matrícula</th>
-            <th>Curso</th>
-          </tr>
-        </thead>
-        <tbody>
-          {professores.map((professor) => (
-            <tr key={professor.id}>
-              <td>{professor.id}</td>
-              <td>{professor.nome}</td>
-              <td>{professor.email}</td>
-              <td>{professor.matricula}</td>
-              <td>{professor.curso}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Matrícula</th>
+        <th>Curso</th>
+      </tr>
+      {professores.map((professor, index) => {
+        return (
+          <ProfListCell key={index} professor={professor} />
+        )
+      })}
 
       <h2>Adicionar Novo Professor</h2>
       <div>
@@ -110,8 +105,6 @@ export default function HomeAdm(){
         />
         <button onClick={adicionarProfessor}>Adicionar Professor</button>
       </div>
-    </div>
+    </Container>
   );
-};
-
-
+}
