@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useUser } from "./useUser";
 
 function useAutenticate() {
   const navigateTo = useNavigate();
-  
+  const {setUserLogged} = useUser();
+
   async function login(email, password, setInvalidMatricula) {
     const responseProf = await fetch(
       "https://pibicdb.onrender.com/professores"
@@ -16,8 +18,8 @@ function useAutenticate() {
     );
 
     if (professor) {
-      navigateTo("/homeProf");
-
+      navigateTo("/professor");
+      setUserLogged(professor)
     } else {
 
       const responseAdm = await fetch(
@@ -31,14 +33,21 @@ function useAutenticate() {
       );
 
       if (adm) {
-        navigateTo("/homeAdm");
+        navigateTo("/administrador");
+        setUserLogged(adm)
       } else {
         setInvalidMatricula(true);
       }
     }
   }
+
+  async function logout() {
+    setUserLogged({})
+    navigateTo("/login")
+  }
   return {
     login,
+    logout
   };
 }
 export default useAutenticate;

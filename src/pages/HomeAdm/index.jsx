@@ -5,17 +5,19 @@ import { useNavigate } from "react-router-dom";
 import ProfListCell from "../../components/ProfListCell";
 import "./styles.css";
 import useProfessorAPI from "../../hooks/useProfessorAPI";
+import { useUser } from "../../hooks/useUser";
+import useAutenticate from "../../hooks/useAutenticate";
 
 export default function HomeAdm() {
   const [professores, setProfessores] = useState([]);
-
+  const { logout } = useAutenticate()
+  const { userLogged } = useUser();
   const { carregarProfessores } = useProfessorAPI();
 
   const getProfessores = async () => {
     carregarProfessores().then((res) => {
       setProfessores(res);
-    })
-
+    });
   };
 
   const navigateTo = useNavigate();
@@ -27,19 +29,32 @@ export default function HomeAdm() {
   return (
     <Container>
       <div className="header">
-        <h1>Lista de Professores</h1>
-
-        <div className="buttonContainer">
-          <Button
-            variant="contained"
-            onClick={() => {
-              navigateTo("/professor/adicionar");
-            }}>
-            Adicionar
-          </Button>
+        <div>
+          <div className="welcomeContainer">
+            <h1>Bem-vindo(a) {userLogged.nome}</h1>
+            <div className="buttonContainer">
+              <Button
+                variant="contained"
+                onClick={() => {
+                  navigateTo("/professor/adicionar");
+                }}>
+                Adicionar
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  logout()
+                }}
+                style={{ background: "var(--cor-font-2)", margin: 10 }}
+                >
+                Sair
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
+        <h2>Lista de Professores</h2>
       {professores.map((professor, index) => {
         return <ProfListCell key={index} professor={professor} />;
       })}

@@ -45,7 +45,6 @@ export default function Login() {
               width: 450,
               padding: 5,
               borderRadius: 5,
-              opacity: 0.9,
             }}
           >
             <img src={logoUnicap} alt="Logo da UNICAP" />
@@ -60,7 +59,7 @@ export default function Login() {
               component="form"
               onSubmit={handleSubmit}
               noValidate
-              sx={{ mt: 1 }}
+              style={{ height: 160, width: 380 }}
             >
               <TextField
                 margin="normal"
