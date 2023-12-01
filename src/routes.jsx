@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Aluno from "./pages/Aluno";
 import HomeProf from "./pages/HomeProf";
 import AddProf from "./pages/AddProf";
+import FormProf from "./pages/FormProf"
 import { UserProvider } from "./hooks/useUser";
 
 export default function Router() {
@@ -17,6 +18,7 @@ export default function Router() {
           <Route path="/login" element={<Login />} />
           <Route path="/aluno" element={<Aluno />} />
           <Route path="/professor" element={<HomeProf />} />
+          <Route path="/formProf" element={<FormProf />} />
           <Route path="/professor/adicionar" element={<AddProf />} />
         </Routes>
       </BrowserRouter>

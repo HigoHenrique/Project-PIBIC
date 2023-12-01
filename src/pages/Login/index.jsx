@@ -9,9 +9,12 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logoUnicap from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import Grid from '@mui/material/Grid';
+import { Link } from 'react-router-dom';
 
 import "./styles.css";
 import useAutenticate from "../../hooks/useAutenticate";
+
 
 const theme = createTheme();
 
@@ -88,6 +91,15 @@ export default function Login() {
                 label="Lembrar do e-mail"
               />
             </Box>
+
+            <Grid item>
+                <Link to={navigateTo('/formProf')}>
+                  {"Não possui conta ? Cadastre-se"}
+                </Link>
+              </Grid>
+
+
+
             <Button
               onClick={handleClick}
               type="submit"
