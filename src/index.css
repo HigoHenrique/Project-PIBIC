@@ -104,11 +104,17 @@ left: 645px;
 }
 
 
-
-
-
 #vinculacao:hover {
   color: #24237af5;
+}
+
+#titulogerador{
+  text-align: center;
+  
+}
+#inputdeclaracao{
+  margin-top: 242px;
+  width: 280px;
 }
 
 
