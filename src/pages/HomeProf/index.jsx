@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css'
-import { Container } from '@mui/material';
+import { Container, Button } from '@mui/material';
+
+import { useUser } from "../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
+import useAutenticate from "../../hooks/useAutenticate";
 
 
 const API_URL = 'https://pibicdb.onrender.com/alunos';
@@ -33,7 +37,9 @@ export default function HomeProf() {
     linkLattes: '',
     obs1: '',
   });
-
+  const { userLogged } = useUser();
+  const navigateTo = useNavigate();
+  const { logout } = useAutenticate()
   useEffect(() => {
     fetchData();
   }, []);
@@ -90,9 +96,26 @@ export default function HomeProf() {
   };
 
   return (
-    <Container sx={{
-        margin: 20
-    }}>
+    <div style={{ margin: 50, offset: 1 }}>
+      <div className="header">
+        <div>
+          <div className="welcomeContainer">
+            <h1>Bem-vindo(a) {userLogged.nome}</h1>
+            <div className="buttonContainer">
+              
+              <Button
+                variant="contained"
+                onClick={() => {
+                  logout()
+                }}
+                style={{ background: "var(--cor-font-2)", margin: 10 }}
+                >
+                Sair
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
       <h1>Lista de Alunos</h1>
       <table>
         <thead>
@@ -253,7 +276,7 @@ export default function HomeProf() {
           Adicionar
         </button>
       </form>
-    </Container>
+    </div>
   );
 }
 
