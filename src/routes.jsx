@@ -4,6 +4,7 @@ import HomeAdm from './pages/HomeAdm'
 import Login from './pages/Login'
 import Aluno from './pages/Aluno'
 import HomeProf from './pages/HomeProf'
+import AddProf from "./pages/AddProf"
 
 
 export default function Router() {
@@ -11,10 +12,11 @@ export default function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<ChoseLogin/>} />
-                <Route path='/homeAdm' element={<HomeAdm/>} />
-                <Route path='/login' element={<Login/>} />
+                <Route path='/administrador' element={<HomeAdm/>} />
+                <Route path='/login' element={<HomeAdm/>} />
                 <Route path='/aluno' element={<Aluno/>} />
-                <Route path='/homeProf' element={<HomeProf/>} />
+                <Route path='/professor' element={<HomeProf/>} />
+                <Route path="/professor/adicionar" element={<AddProf />} />
             </Routes>
         </BrowserRouter>
     )

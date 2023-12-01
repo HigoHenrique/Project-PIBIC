@@ -15,9 +15,11 @@ export default function ProfListCell({ professor }) {
         <p id="email">{professor.email}</p>
       </div>
       <div className="fieldContainer">
-        <p>{professor.matricula}</p>
+        <p>Matricula: </p>
+        <p> {professor.matricula}</p>
       </div>
       <div className="fieldContainer">
+        <p>Curso: </p>
         <p>{professor.curso}</p>
       </div>
     </div>
