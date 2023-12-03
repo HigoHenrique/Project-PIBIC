@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useAutenticate from "../../hooks/useAutenticate";
 
 
-const API_URL = 'https://pibicdb.onrender.com/alunos';
+const API_URL = 'http://3.144.79.84:3000/alunos';
 export default function HomeProf() {
   const [alunos, setAlunos] = useState([]);
   const [novoAluno, setNovoAluno] = useState({
