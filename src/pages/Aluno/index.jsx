@@ -20,8 +20,8 @@ const PdfContent = React.forwardRef(({ alunoInfo }, ref) => (
       
       <h3>
         Por meio desta declaração, atestamos que o(a) estudante{' '}
-        {alunoInfo?.nomeAluno}, regularmente matriculado(a) com o número:{' '}
-        {alunoInfo?.matricula},
+        {alunoInfo.nomeAluno}, regularmente matriculado(a) com o número:{' '}
+        {alunoInfo.matricula},
       </h3>
       <h3>
         está oficialmente vinculado(a) e participando ativamente do Programa
@@ -29,12 +29,12 @@ const PdfContent = React.forwardRef(({ alunoInfo }, ref) => (
       </h3>
       <h3>
         O(a) estudante mencionado(a) encontra-se envolvido(a) no projeto de
-        pesquisa intitulado "{alunoInfo?.tituloProjeto}", sob a orientação do(a)
-        Professor(a) {alunoInfo?.nomeCompletoOrientador}.
+        pesquisa intitulado "{alunoInfo.tituloProjeto}", sob a orientação do(a)
+        Professor(a) {alunoInfo.nomeCompletoOrientador}.
       </h3>
       <h3>
         Esta participação tem o objetivo de promover o avanço do conhecimento
-        na área de {alunoInfo?.cursoOrientador} e proporcionar uma
+        na área de {alunoInfo.cursoOrientador} e proporcionar uma
         experiência enriquecedora em pesquisa científica.
       </h3>
     </div>
