@@ -126,7 +126,7 @@ const Aluno = () => {
                         <div id='divimg'>
                         <img
                                 id="foto5"
-                                src="https://www1.unicap.br/PortalPosgraduacao/img/catolica_vinho.png"
+                                src="https://www1.unicap.br/ppgd/wp-content/uploads/2016/12/marca_2025_altaresol.png"
                                 alt="Logo"
                         />
 
