@@ -175,7 +175,7 @@ const Aluno = () => {
 
 const login = async (matricula) => {
         const responseAluno = await fetch(
-                'https://pibicdb.onrender.com/alunos'
+                'https://3.144.79.84/alunos'
         ).then((res) => res.json());
 
         const aluno = responseAluno.find((aluno) => aluno.matricula === matricula);
