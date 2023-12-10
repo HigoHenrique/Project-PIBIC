@@ -7,7 +7,7 @@ function useAutenticate() {
 
   async function login(email, password, setInvalidMatricula) {
     const responseProf = await fetch(
-      "http://3.144.79.84:3000/professores"
+      "https://pibicdb.onrender.com/professores"
     ).then((res) => {
       return res.json();
     });
@@ -23,7 +23,7 @@ function useAutenticate() {
     } else {
 
       const responseAdm = await fetch(
-        "http://3.144.79.84:3000/administradores"
+        "https://pibicdb.onrender.com/administradores"
       ).then((res) => {
         return res.json();
       });

@@ -16,7 +16,7 @@ export default function ChoseLogin() {
 
   const handleAluno = () => {
     navigateTo("/aluno");
-    // parte de yuri
+   
   };
 
   const handleProf = () => {
@@ -48,7 +48,7 @@ export default function ChoseLogin() {
               borderRadius: 5,
             }}
           >
-            <img src={logoUnicap} alt="Logo da UNICAP" />
+            <img src="https://th.bing.com/th/id/OIP.vF9hJlUVMpk9xJ-e4Y1e-AAAAA?rs=1&pid=ImgDetMain" />
             <Typography
               component="h1"
               variant="h5"

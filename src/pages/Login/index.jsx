@@ -50,7 +50,7 @@ export default function Login() {
               borderRadius: 5,
             }}
           >
-            <img src={logoUnicap} alt="Logo da UNICAP" />
+            <img src="https://th.bing.com/th/id/OIP.vF9hJlUVMpk9xJ-e4Y1e-AAAAA?rs=1&pid=ImgDetMain" alt="Logo da UNICAP" />
             <Typography
               component="h1"
               variant="h5"
@@ -62,7 +62,7 @@ export default function Login() {
               component="form"
               onSubmit={handleSubmit}
               noValidate
-              style={{ height: 160, width: 380 }}
+              style={{ height: 260, width: 380 }}
             >
               <TextField
                 margin="normal"

@@ -1,100 +1,110 @@
 :root {
-  --cor-primary-1 : #690013;
-  --cor-primary-2 : #830018;
+  --cor-primary-1: #690013;
+  --cor-primary-2: #830018;
   --cor-primary-3: #9C001C;
   --cor-primary-4: #A31111;
   --cor-secundary-1: #9D7628;
   --cor-secundary-2: #C4A251;
-  --cor-secundarty-3: #C8B06E;
+  --cor-secundary-3: #C8B06E;
   --cor-font-1: #36000A;
   --cor-font-2: #4f000d;
-  --cor-bg-1:  #00000012;
+  --cor-bg-1: #00000012;
   --cor-bg-2: #00000060;
   --cor-bg-3: #00000090;
 }
 
-body{
+body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
-#título{
+
+#título {
   position: relative;
   left: 370px;
-  top:250px;
+  top: 250px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
-#texto{
+
+#texto {
   padding: 55px;
   position: relative;
-  top:500px;
-  font-family: cursive;
-  font-size: 20px;
-  font-weight: normal;
+  top: 370px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 29px;
+  font-weight: 100 !important;
   line-height: 1.5;
 }
-#foto{
-  width: 800px;
-  height: 900px;
-   position: relative;
-   right: 250px;
-   top: -320px;
-   margin-bottom: -820px;
+/*foto unicap*/
+#foto {
+  width: 790px;
+  height: 490px;
+  position: absolute;
+  margin-left: 38%;
+  top: -90px;
+  margin-bottom: 0;
+  /* border:1px solid black; */
 }
-#foto2{
+
+/*foto pibic*/
+#foto2 {
   width: 200px;
   height: 200px;
-   position: relative;
-   right: -60px;
-   top: -650px;
-   margin-bottom: -820px;
+  position: relative;
+  margin-left: 8%;
+  top: -570px;
+  margin-bottom: -820px;
+  /* border:1px solid blue; */
 }
-#foto3{
+/*foto assinatura*/
+#foto3 {
   width: 180px;
   height: 100px;
-   position: relative;
-   left: 360px;
-  bottom: 80px;
-  
-   
-}
-#caixa{
- left: 60px;
-  width: 1000px; /* Largura da caixa */
-  height: 200px; /* Altura da caixa */
   position: relative;
-  top:600px;
-  border: 2px solid #333; /* Borda da caixa */
-  padding: 20px; /* Espaçamento interno da caixa */
-  box-sizing: border-box; /* Garante que a largura e a altura incluam a borda e o preenchimento */
-  margin: 20px; /* Espaçamento externo ao redor da caixa */
+  left: 360px;
+  bottom: 80px;
+  /* border:1px solid red; */
 }
-#data{
+
+#foto5 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -370px;; 
+  top: -305px; 
+  /* margin-left: 25% !important;
+  margin-right: auto !important; */
+ 
+}
+
+#caixa {
+  left: 60px;
+  width: 1000px;
+  height: 200px;
+  position: relative;
+  top: 350px;
+  border: 2px solid #333;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+#data {
   position: relative;
   bottom: 80px;
   font-family: cursive;
   font-size: 20px;
   font-weight: normal;
-  
 }
-#assinatura{
-position: relative;
-bottom: 95px;
-left: 645px;
-}
-#curriculo {
-  top: 5px;
-  height: 30px;
+
+#assinatura {
   position: relative;
-  right: 0px;
-  color: #7a3723f5;
+  bottom: 95px;
+  left: 645px;
 }
 
-#curriculo:hover {
-  color: #24237af5;
-}
-
+#curriculo,
 #vinculacao {
   top: 5px;
   height: 30px;
@@ -103,18 +113,85 @@ left: 645px;
   color: #7a3723f5;
 }
 
-
+#curriculo:hover,
 #vinculacao:hover {
   color: #24237af5;
 }
 
-#titulogerador{
+#titulogerador {
   text-align: center;
-  
 }
-#inputdeclaracao{
+
+
+/* #inputdeclaracao { 
   margin-top: 242px;
   width: 280px;
+  border: 1px solid black;
+}*/
+#cont {
+  background-color: white;
+  width: 438px;
+  height: 250px;
+  display: flex;
+  border-radius: 20px;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 1;
+ 
+}
+
+#inputcaixa {
+  position: relative;
+  z-index: 10;
+  /* Ajuste a propriedade right conforme necessário */
+  right: 0; /* ou qualquer valor desejado */
+  background-color: white;
+  margin-top: 25px;
+  width: 200px;
 }
 
 
+
+#divimg{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -38%;
+  margin-right: auto;
+  position: absolute;
+
+}
+
+
+#buttoncaixa{
+  position: relative;
+  z-index: 10;
+}
+
+
+#maincont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://imagens.ne10.uol.com.br/veiculos/_midias/jpg/2023/08/04/dg6a5903-23755246.jpg?20231019070154') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+
+
+#partialcaixa{
+  
+  height: 160px;
+    width: 380px;
+    border: 0.5px solid rgb(152, 148, 148);
+    border-color: #a09595;
+    text-align: center;
+    border-radius: 20px;
+    
+}

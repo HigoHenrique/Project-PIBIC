@@ -186,7 +186,7 @@ export default function Form() {
             display: 'flex',
             margin: 'auto',
             marginTop: '20px',
-            width: '100%',
+            width: '80%',
             height: '40px',
           }}
           variant="contained"
