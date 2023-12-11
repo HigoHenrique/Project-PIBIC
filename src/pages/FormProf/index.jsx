@@ -24,7 +24,7 @@ export default function AddProf() {
   
   const adicionarProfessor = async () => {
     try {
-      const response = await fetch("https://pibicdb.onrender.com/professores", {
+      const response = await fetch("https://3.144.79.84/professores", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
