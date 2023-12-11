@@ -116,7 +116,7 @@ export default function HomeProf() {
           </div>
         </div>
       </div>
-      <h1>Lista de Alunos</h1>
+      <h1>Lista de Discente</h1>
       <table>
         <thead>
           <tr>
@@ -180,7 +180,7 @@ export default function HomeProf() {
 </tbody>
 </table>
 
-      <h2>Adicionar novo aluno</h2>
+      <h2>Adicionar Discente</h2>
       <form>
         <label>Email:
           <input type="text" name="email" value={novoAluno.email} onChange={handleInputChange} />

@@ -64,7 +64,7 @@ export default function ChoseLogin() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, background: "var(--cor-primary-1)" }}
               >
-                Sou Aluno
+                Sou Discente
               </Button>
               <Button
                 onClick={handleProf}
@@ -73,7 +73,7 @@ export default function ChoseLogin() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, background: "var(--cor-primary-1)" }}
               >
-                Sou Professor
+                Sou Docente
               </Button>
             </div>
           </Box>

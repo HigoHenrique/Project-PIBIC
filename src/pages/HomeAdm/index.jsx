@@ -54,7 +54,7 @@ export default function HomeAdm() {
         </div>
       </div>
 
-        <h2>Lista de Professores</h2>
+        <h2>Lista de Docentes</h2>
       {professores.map((professor, index) => {
         return <ProfListCell key={index} professor={professor} />;
       })}
