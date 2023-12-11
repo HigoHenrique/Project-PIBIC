@@ -12,11 +12,14 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import logoUnicap from '../../public/logo-2-unicap.png'
+import { useNavigate } from "react-router-dom";
 
 
 const settings = ['Sair'];
 
 function Header() {
+    const navigateTo = useNavigate();
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -25,6 +28,8 @@ function Header() {
     };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
+        navigateTo('/login');
+        
     };
 
     const handleCloseNavMenu = () => {
@@ -43,7 +48,7 @@ function Header() {
                         padding:'5px',
                         marginRight:'20px',
                     }}>
-                        <img src={logoUnicap} alt="Logo da UNICAP" width={'250px'} height={'100px'} />
+                        <img src={logoUnicap} alt="Logo da UNICAP" id='UnicapADDProf'/>
                     </Box>
                     {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
@@ -57,9 +62,9 @@ function Header() {
                         ))} */}
                     {/* </Box> */}
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="configuração">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar sx={{width:'50px', height:'50px', marginLeft:'1200px'}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                        <Tooltip title="">
+                            <IconButton  name="sair"onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar sx={{width:'50px', height:'50px', marginLeft:'1139px'}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                         </Tooltip>
                         <Menu

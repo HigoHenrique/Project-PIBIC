@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css'
 import { Container, Button } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 
 import { useUser } from "../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 import useAutenticate from "../../hooks/useAutenticate";
+import swal from 'sweetalert2';
 
 
-const API_URL = 'https://pibicdb.onrender.com/alunos';
+const API_URL = 'https://3.144.79.84/alunos';
 export default function HomeProf() {
   const [alunos, setAlunos] = useState([]);
   const [novoAluno, setNovoAluno] = useState({
@@ -37,6 +40,7 @@ export default function HomeProf() {
     linkLattes: '',
     obs1: '',
   });
+  const [tabelaVisivel, setTabelaVisivel] = useState(true);
   const { userLogged } = useUser();
   const navigateTo = useNavigate();
   const { logout } = useAutenticate()
@@ -90,9 +94,26 @@ export default function HomeProf() {
         linkLattes: '',
         obs1: '',
       });
+      swal.fire({
+        title: 'Aluno Cadastrado!',
+        text: 'Aluno Cadastrado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    });
     } catch (error) {
       console.error('Error ao adicionar novo aluno:', error);
+      swal.fire({
+        title: 'Erro!',
+        text: 'Aluno não foi cadastrado!',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+    });
+      
     }
+  };
+
+  const toggleTabelaVisivel = () => {
+    setTabelaVisivel(!tabelaVisivel);
   };
 
   return (
@@ -103,6 +124,14 @@ export default function HomeProf() {
             <h1>Bem-vindo(a) {userLogged.nome}</h1>
             <div className="buttonContainer">
               
+            <Button
+                variant="contained"
+                onClick={toggleTabelaVisivel}
+                style={{ background: "var(--cor-font-2)", margin: 10 }}
+              >{tabelaVisivel ? "Mostrar Tabela" : "Esconder Tabela"}
+              </Button>
+
+
               <Button
                 variant="contained"
                 onClick={() => {
@@ -112,11 +141,15 @@ export default function HomeProf() {
                 >
                 Sair
               </Button>
+              
+              
             </div>
           </div>
         </div>
       </div>
-      <h1>Lista de Discente</h1>
+      {tabelaVisivel && (
+        <>
+      <h1>Lista de Alunos</h1>
       <table>
         <thead>
           <tr>
@@ -179,107 +212,254 @@ export default function HomeProf() {
     ))}
 </tbody>
 </table>
+</>
+)}
 
-      <h2>Adicionar Discente</h2>
-      <form>
-        <label>Email:
-          <input type="text" name="email" value={novoAluno.email} onChange={handleInputChange} />
-        </label>
         <br />
-        <label>Nome Completo Orientador:
-          <input type="text" name="nomeCompletoOrientador" value={novoAluno.nomeCompletoOrientador} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Titulação:
-          <input type="text" name="titulacao" value={novoAluno.titulacao} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Matrícula:
-          <input type="text" name="matricula" value={novoAluno.matricula} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>CPF Orientador:
-          <input type="text" name="cpfOrientador" value={novoAluno.cpfOrientador} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Curso Orientador:
-          <input type="text" name="cursoOrientador" value={novoAluno.cursoOrientador} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Telefone Orientador:
-          <input type="text" name="telefoneOrientador" value={novoAluno.telefoneOrientador} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Título Projeto:
-          <input type="text" name="tituloProjeto" value={novoAluno.tituloProjeto} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Área Conhecimento CNPQ:
-          <input type="text" name="areaConhecimentoCNPQ" value={novoAluno.areaConhecimentoCNPQ} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Nome Grupo Pesquisa:
-          <input type="text" name="nomeGrupoPesquisa" value={novoAluno.nomeGrupoPesquisa} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Nome Aluno:
-          <input type="text" name="nomeAluno" value={novoAluno.nomeAluno} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Registro Acadêmico:
-          <input type="text" name="registroAcademico" value={novoAluno.registroAcademico} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Indicação:
-          <input type="text" name="indicacao" value={novoAluno.indicacao} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Condição Final:
-          <input type="text" name="condicaoFinal" value={novoAluno.condicaoFinal} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Título Plano Trabalho:
-          <input type="text" name="tituloPlanoTrabalho" value={novoAluno.tituloPlanoTrabalho} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Email Institucional Aluno:
-          <input type="text" name="emailInstitucionalAluno" value={novoAluno.emailInstitucionalAluno} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Endereço Completo:
-          <input type="text" name="enderecoCompleto" value={novoAluno.enderecoCompleto} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>CPF Aluno:
-          <input type="text" name="cpfAluno" value={novoAluno.cpfAluno} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>RG Aluno:
-          <input type="text" name="rgAluno" value={novoAluno.rgAluno} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Data Nascimento Aluno:
-          <input type="text" name="dataNascAluno" value={novoAluno.dataNascAluno} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Telefone Aluno:
-          <input type="text" name="telefoneAluno" value={novoAluno.telefoneAluno} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Link Lattes:
-          <input type="text" name="linkLattes" value={novoAluno.linkLattes} onChange={handleInputChange} />
-        </label>
-        <br />
-        <label>Observação:
-          <input type="text" name="obs1" value={novoAluno.obs1} onChange={handleInputChange} />
-        </label>
-        <br />
-        <button type="button" onClick={handleAddAluno}>
-          Adicionar
-        </button>
-      </form>
+        <div id='inputs'>
+        <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <h2>Adicionar novo aluno</h2>
+          <form>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Email"
+                  type="text"
+                  name="email"
+                  value={novoAluno.email}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Nome Completo Orientador"
+                  label="Nome Completo Orientador"
+                  type="text"
+                  name="nomeCompletoOrientador"
+                  value={novoAluno.nomeCompletoOrientador}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Titulação"
+                  type="text"
+                  name="titulacao"
+                  value={novoAluno.titulacao}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  label="Matrícula"
+                  type="text"
+                  name="matricula"
+                  value={novoAluno.matricula}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                 title="CPF Orientador"
+                  label="CPF Orientador"
+                  type="text"
+                  name="cpfOrientador"
+                  value={novoAluno.cpfOrientador}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                 title="Curso Orientador"
+                  label="Curso Orientador"
+                  type="text"
+                  name="cursoOrientador"
+                  value={novoAluno.cursoOrientador}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Telefone Orientador"
+                  label="Telefone Orientador"
+                  type="text"
+                  name="telefoneOrientador"
+                  value={novoAluno.telefoneOrientador}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Título Projeto"
+                  label="Título Projeto"
+                  type="text"
+                  name="tituloProjeto"
+                  value={novoAluno.tituloProjeto}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                 title="Área Conhecimento CNPQ"
+                  label="Área Conhecimento CNPQ"
+                  type="text"
+                  name="areaConhecimentoCNPQ"
+                  value={novoAluno.areaConhecimentoCNPQ}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Nome Grupo Pesquisa"
+                  label="Nome Grupo Pesquisa"
+                  type="text"
+                  name="nomeGrupoPesquisa"
+                  value={novoAluno.nomeGrupoPesquisa}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Nome Aluno"
+                  label="Nome Aluno"
+                  type="text"
+                  name="nomeAluno"
+                  value={novoAluno.nomeAluno}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Registro Acadêmico"
+                  label="Registro Acadêmico"
+                  type="text"
+                  name="registroAcademico"
+                  value={novoAluno.registroAcademico}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                 title="Indicação"
+                  label="Indicação"
+                  type="text"
+                  name="indicacao"
+                  value={novoAluno.indicacao}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Condição Final"
+                  label="Condição Final"
+                  type="text"
+                  name="condicaoFinal"
+                  value={novoAluno.condicaoFinal}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Título Plano Trabalho"
+                  label="Título Plano Trabalho"
+                  type="text"
+                  name="tituloPlanoTrabalho"
+                  value={novoAluno.tituloPlanoTrabalho}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Email Institucional Aluno"
+                  label="Email Institucional Aluno"
+                  type="text"
+                  name="emailInstitucionalAluno"
+                  value={novoAluno.emailInstitucionalAluno}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Endereço Completo"
+                  label="Endereço Completo"
+                  type="text"
+                  name="enderecoCompleto"
+                  value={novoAluno.enderecoCompleto}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                 title="CPF Aluno"
+                  label="CPF Aluno"
+                  type="text"
+                  name="cpfAluno"
+                  value={novoAluno.cpfAluno}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                 title="RG Aluno"
+                  label="RG Aluno"
+                  type="text"
+                  name="rgAluno"
+                  value={novoAluno.rgAluno}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Data Nascimento Aluno"
+                  label="Data Nascimento Aluno"
+                  type="text"
+                  name="dataNascAluno"
+                  value={novoAluno.dataNascAluno}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Telefone Aluno"
+                  label="Telefone Aluno"
+                  type="text"
+                  name="telefoneAluno"
+                  value={novoAluno.telefoneAluno}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                title="Link Lattes"
+                  label="Link Lattes"
+                  type="text"
+                  name="linkLattes"
+                  value={novoAluno.linkLattes}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                
+                  label="Observação"
+                  type="text"
+                  name="obs1"
+                  value={novoAluno.obs1}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              {/* Repeat the above structure for each field */}
+            </Grid>
+            <br />
+            <button type="button" onClick={handleAddAluno}>
+              Adicionar
+            </button>
+          </form>
+        </Grid>
+      </Grid>
+            </div>
     </div>
   );
 }
-
 

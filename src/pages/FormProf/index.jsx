@@ -5,6 +5,10 @@ import TextField from '@mui/material/TextField';
 import Header from '../../components/Header';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert2';
+
+import fotospdf from "../../assets/icons8-pdf-40.png"
+import fotospdff from "../../assets/icons8-export-pdf-40.png"
 
 
 export default function AddProf() {
@@ -29,7 +33,12 @@ export default function AddProf() {
       });
       if (response.ok) {
         setNovoProfessor({ nome: "", email: "", matricula: "", curso: "" });
-        alert("Professor adicionado com sucesso!")
+        swal.fire({
+          title: 'Professor Adicionado!',
+          text: 'Use seu email e matrícula no login',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+      });
         navigateTo("/login")
        
       } else {
@@ -138,6 +147,13 @@ export default function AddProf() {
               setNovoProfessor({ ...novoProfessor, curso: e.target.value })
             }
             />
+
+          <img
+          id='pdfImagg'
+           
+           src={fotospdff}
+         />
+
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -153,6 +169,8 @@ export default function AddProf() {
             }
             />
           </Grid>
+
+         
 
           <Grid item xs={12} sm={6} id="input2">
             <TextField
@@ -170,6 +188,8 @@ export default function AddProf() {
             />
           </Grid>
 
+          
+
           <Grid item xs={12} sm={6} id="input3">
             <TextField
               required
@@ -185,6 +205,15 @@ export default function AddProf() {
               // onChange={handleInputChange}
             />
           </Grid>
+
+
+          <img
+            id="pdfImag"
+           src={fotospdf}
+         />
+
+          <a id="linkEdital" href="https://portal.unicap.br/documents/475032/3383298/PIBIC+26%C2%BA+Edital+-+2023.2024.pdf/bc13d631-31ff-8337-2aca-bcad93f954c7?t=1682705006130">Edital Pibic</a>
+
         </Grid>
 
         <Button

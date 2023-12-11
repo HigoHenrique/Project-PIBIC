@@ -67,10 +67,16 @@ tr {
     background-color: #f2f2f2; 
     transition: border-color 0.3s; 
   }
+  #inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
   
   button {
     margin-top: 16px;
-    padding: 12px;
+    padding: 20px;
     background-color: #2196F3;
     color: #fff;
     border: none;
@@ -79,6 +85,6 @@ tr {
   }
   
   button:hover {
-    background-color: #0d5cb6;
+    background-color: #214875;
   }
   

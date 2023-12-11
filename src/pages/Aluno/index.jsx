@@ -3,6 +3,7 @@ import { useReactToPrint } from 'react-to-print';
 import { saveAs } from 'file-saver';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import swal from 'sweetalert2';
 
 
 const PdfContent = React.forwardRef(({ alunoInfo }, ref) => (
@@ -23,8 +24,8 @@ const PdfContent = React.forwardRef(({ alunoInfo }, ref) => (
 
                         <p>
                                 Por meio desta declaração, atestamos que o(a) estudante{' '}
-                                {alunoInfo.nomeAluno}, regularmente matriculado(a) com o número:{' '}
-                                {alunoInfo.matricula},
+                                {alunoInfo?.nomeAluno}, regularmente matriculado(a) com o número:{' '}
+                                {alunoInfo?.matricula},
                         </p>
                         <p>
                                 está oficialmente vinculado(a) e participando ativamente do Programa
@@ -32,12 +33,12 @@ const PdfContent = React.forwardRef(({ alunoInfo }, ref) => (
                         </p>
                         <p>
                                 O(a) estudante mencionado(a) encontra-se envolvido(a) no projeto de
-                                pesquisa intitulado "{alunoInfo.tituloProjeto}", sob a orientação do(a)
-                                Professor(a) {alunoInfo.nomeCompletoOrientador}.
+                                pesquisa intitulado "{alunoInfo?.tituloProjeto}", sob a orientação do(a)
+                                Professor(a) {alunoInfo?.nomeCompletoOrientador}.
                         </p>
                         <p>
                                 Esta participação tem o objetivo de promover o avanço do conhecimento
-                                na área de {alunoInfo.cursoOrientador} e proporcionar uma
+                                na área de {alunoInfo?.cursoOrientador} e proporcionar uma
                                 experiência enriquecedora em pesquisa científica.
                         </p>
                 </div>
@@ -102,6 +103,14 @@ const Aluno = () => {
                                 // Se a matrícula for válida, imprima ou baixe o PDF
                                 handlePrint();
 
+                                swal.fire({
+                                        title: 'Matrícula Válida!',
+                                        text: 'Espere 05 segundos para gerar seu PDF',
+                                        icon: 'success',
+                                        confirmButtonText: 'Ok'
+                                    });
+
+
                                 const content = pdfContentRef.current;
                                 if (content) {
                                         const pdfOptions = {
@@ -114,7 +123,16 @@ const Aluno = () => {
 
                         } else {
                                 // Se a matrícula não for válida, exiba uma mensagem ou tome outra ação
-                                console.log('Matrícula inválida. Não será gerado o PDF.');
+                                console.log('Matrícula inválida. Não será gerado ');
+                               
+                                        swal.fire({
+                                            title: 'Matrícula inválida!',
+                                            text: 'Digite uma Matrícula válida.',
+                                            icon: 'error',
+                                            confirmButtonText: 'Ok'
+                                        });
+                                        
+                                    
                         }
                 }, 2000)
         }
@@ -137,11 +155,11 @@ const Aluno = () => {
 
                         <Box>
 
-
+                                    {/* <h1 id="títuloMatVinculo">Declaração Matrícula Vínculo</h1> */}
 
                                 <div id="partialcaixa">
 
-
+                   
                                         <TextField
                                                 id="inputcaixa"
                                                 type="text"

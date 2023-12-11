@@ -1,8 +1,42 @@
 img {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 90px;
     padding: 5px;
      
+}
+#linkEdital{
+color: #1976d2;
+position: relative;
+width: 85px;
+height: 25px;
+margin-top: 50px;
+margin-left: 100px;
+box-shadow: 5px 3px 9px 3px #2196F3;
+}
+
+#pdfImag{
+width: 3%;
+height: 31px !important;
+position: relative;
+right: 7%;
+bottom: -33px;
+
+}
+
+#pdfImagg{
+    width: 6%;
+    height: 31px !important;
+    position: relative;
+    right: -94%;
+    bottom: -74px;
+    }
+    
+
+
+#UnicapADDProf{
+    width: 200px;
+    position: relative;
+    right:8%;
 }
 
 #container {

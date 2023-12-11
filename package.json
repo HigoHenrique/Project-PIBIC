@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "react-to-pdf": "^1.0.1",
-    "react-to-print": "^2.14.15"
+    "react-to-print": "^2.14.15",
+    "sweetalert2": "^11.10.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

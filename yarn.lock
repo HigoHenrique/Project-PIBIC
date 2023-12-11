@@ -1186,6 +1186,11 @@
   "resolved" "https://registry.npmjs.org/svg-pathdata/-/svg-pathdata-6.0.3.tgz"
   "version" "6.0.3"
 
+"sweetalert2@^11.10.1":
+  "integrity" "sha512-qu145oBuFfjYr5yZW9OSdG6YmRxDf8CnkgT/sXMfrXGe+asFy2imC2vlaLQ/L/naZ/JZna1MPAY56G4qYM0VUQ=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.10.1.tgz"
+  "version" "11.10.1"
+
 "text-segmentation@^1.0.3":
   "integrity" "sha512-iOiPUo/BGnZ6+54OsWxZidGCsdU8YbE4PSpdPinp7DeMtUJNJBoJ/ouUSTJjHkh1KntHaltHl/gDs2FC4i5+Nw=="
   "resolved" "https://registry.npmjs.org/text-segmentation/-/text-segmentation-1.0.3.tgz"
