@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import logoUnicap from '../../public/logo-2-unicap.png'
 
-const pages = ['Cadastro', 'Listagem'];
+
 const settings = ['Sair'];
 
 function Header() {
@@ -45,21 +45,21 @@ function Header() {
                     }}>
                         <img src={logoUnicap} alt="Logo da UNICAP" width={'250px'} height={'100px'} />
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block', fontSize:'20px' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
+                            // <Button
+                            //     key={page}
+                            //     onClick={handleCloseNavMenu}
+                            //     sx={{ my: 2, color: 'white', display: 'block', fontSize:'20px' }}
+                            // >
+                            //     {page}
+                            // </Button>
+                        ))} */}
+                    {/* </Box> */}
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="configuração">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar sx={{width:'50px', height:'50px'}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar sx={{width:'50px', height:'50px', marginLeft:'1200px'}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -69,11 +69,13 @@ function Header() {
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
+                                
                             }}
                             keepMounted
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
+                                
                             }}
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}

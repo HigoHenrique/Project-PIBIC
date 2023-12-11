@@ -147,36 +147,38 @@ export default function HomeProf() {
           </tr>
         </thead>
         <tbody>
-          {alunos.map((aluno) => (
-            <tr key={aluno.id}>
-              <td>{aluno.id}</td>
-              <td>{aluno.email}</td>
-              <td>{aluno.nomeCompletoOrientador}</td>
-              <td>{aluno.titulacao}</td>
-              <td>{aluno.matricula}</td>
-              <td>{aluno.cpfOrientador}</td>
-              <td>{aluno.cursoOrientador}</td>
-              <td>{aluno.telefoneOrientador}</td>
-              <td>{aluno.tituloProjeto}</td>
-              <td>{aluno.areaConhecimentoCNPQ}</td>
-              <td>{aluno.nomeGrupoPesquisa}</td>
-              <td>{aluno.nomeAluno}</td>
-              <td>{aluno.registroAcademico}</td>
-              <td>{aluno.indicacao}</td>
-              <td>{aluno.condicaoFinal}</td>
-              <td>{aluno.tituloPlanoTrabalho}</td>
-              <td>{aluno.emailInstitucionalAluno}</td>
-              <td>{aluno.enderecoCompleto}</td>
-              <td>{aluno.cpfAluno}</td>
-              <td>{aluno.rgAluno}</td>
-              <td>{aluno.dataNascAluno}</td>
-              <td>{aluno.telefoneAluno}</td>
-              <td>{aluno.linkLattes}</td>
-              <td>{aluno.obs1}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+  {alunos
+    .filter((aluno) => aluno.email === userLogged.email)
+    .map((aluno) => (
+      <tr key={aluno.id}>
+        <td>{aluno.id}</td>
+        <td>{aluno.email}</td>
+        <td>{aluno.nomeCompletoOrientador}</td>
+        <td>{aluno.titulacao}</td>
+        <td>{aluno.matricula}</td>
+        <td>{aluno.cpfOrientador}</td>
+        <td>{aluno.cursoOrientador}</td>
+        <td>{aluno.telefoneOrientador}</td>
+        <td>{aluno.tituloProjeto}</td>
+        <td>{aluno.areaConhecimentoCNPQ}</td>
+        <td>{aluno.nomeGrupoPesquisa}</td>
+        <td>{aluno.nomeAluno}</td>
+        <td>{aluno.registroAcademico}</td>
+        <td>{aluno.indicacao}</td>
+        <td>{aluno.condicaoFinal}</td>
+        <td>{aluno.tituloPlanoTrabalho}</td>
+        <td>{aluno.emailInstitucionalAluno}</td>
+        <td>{aluno.enderecoCompleto}</td>
+        <td>{aluno.cpfAluno}</td>
+        <td>{aluno.rgAluno}</td>
+        <td>{aluno.dataNascAluno}</td>
+        <td>{aluno.telefoneAluno}</td>
+        <td>{aluno.linkLattes}</td>
+        <td>{aluno.obs1}</td>
+      </tr>
+    ))}
+</tbody>
+</table>
 
       <h2>Adicionar novo aluno</h2>
       <form>

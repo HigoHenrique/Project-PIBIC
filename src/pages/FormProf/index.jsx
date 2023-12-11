@@ -4,45 +4,43 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Header from '../../components/Header';
 import { Box, Button } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
-export default function Form() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    matricula: '',
-    endereco: '',
-    cpf: '',
-    rg: '',
-    telefone: '',
-    curso: '',
-    email: '',
-    curriculo: '',
-    vinculacao: '',
+
+export default function AddProf() {
+
+  const [novoProfessor, setNovoProfessor] = useState({
+    nome: "",
+    email: "",
+    matricula: "",
+    curso: "",
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleCadastro = async () => {
-    const response = await fetch('https://pibicdb-barbosaerick88.b4a.run/alunos/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      window.location.href = '/';
-      alert('Cadastro realizado com sucesso!');
-    } else {
-      const errorData = await response.json();
-      console.error('Erro ao cadastrar:', errorData.message);
-      // Tratar o erro de acordo com sua necessidade
+  const navigateTo = useNavigate();
+  
+  const adicionarProfessor = async () => {
+    try {
+      const response = await fetch("https://pibicdb.onrender.com/professores", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(novoProfessor),
+      });
+      if (response.ok) {
+        setNovoProfessor({ nome: "", email: "", matricula: "", curso: "" });
+        alert("Professor adicionado com sucesso!")
+        navigateTo("/login")
+       
+      } else {
+        alert("Erro ao adicionar Professor!")
+        console.error("Erro ao adicionar professor");
+      }
+    } catch (error) {
+      console.error("Erro ao adicionar professor:", error);
+      alert("Erro ao adicionar Professor!")
     }
   };
-
   return (
     <>
       <Header />
@@ -59,8 +57,10 @@ export default function Form() {
               label="Nome"
               fullWidth
               variant="standard"
-              value={formData.nome}
-              onChange={handleInputChange}
+              value={novoProfessor.nome}
+              onChange={(e) =>
+                setNovoProfessor({ ...novoProfessor, nome: e.target.value })
+              }
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -71,11 +71,13 @@ export default function Form() {
               label="Matrícula"
               fullWidth
               variant="standard"
-              value={formData.matricula}
-              onChange={handleInputChange}
+              value={novoProfessor.matricula}
+              onChange={(e) =>
+                setNovoProfessor({ ...novoProfessor, matricula: e.target.value })
+              }
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               required
               id="endereco"
@@ -85,8 +87,8 @@ export default function Form() {
               variant="standard"
               value={formData.endereco}
               onChange={handleInputChange}
-            />
-          </Grid>
+            /> */}
+          {/* </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               required
@@ -98,8 +100,8 @@ export default function Form() {
               value={formData.cpf}
               onChange={handleInputChange}
             />
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               required
               id="rg"
@@ -110,7 +112,7 @@ export default function Form() {
               value={formData.rg}
               onChange={handleInputChange}
             />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               required
@@ -119,8 +121,8 @@ export default function Form() {
               label="Telefone"
               fullWidth
               variant="standard"
-              value={formData.telefone}
-              onChange={handleInputChange}
+              // value={formData.telefone}
+              // onChange={handleInputChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -131,8 +133,10 @@ export default function Form() {
               label="Curso"
               fullWidth
               variant="standard"
-              value={formData.curso}
-              onChange={handleInputChange}
+              value={novoProfessor.curso}
+            onChange={(e) =>
+              setNovoProfessor({ ...novoProfessor, curso: e.target.value })
+            }
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -143,8 +147,10 @@ export default function Form() {
               label="Email"
               fullWidth
               variant="standard"
-              value={formData.email}
-              onChange={handleInputChange}
+              value={novoProfessor.email}
+            onChange={(e) =>
+              setNovoProfessor({ ...novoProfessor, email: e.target.value })
+            }
             />
           </Grid>
 
@@ -160,7 +166,7 @@ export default function Form() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={handleInputChange}
+              // onChange={handleInputChange}
             />
           </Grid>
 
@@ -176,7 +182,7 @@ export default function Form() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={handleInputChange}
+              // onChange={handleInputChange}
             />
           </Grid>
         </Grid>
@@ -185,12 +191,12 @@ export default function Form() {
           sx={{
             display: 'flex',
             margin: 'auto',
-            marginTop: '20px',
-            width: '80%',
+            marginTop: '100px',
+            width: '40%',
             height: '40px',
           }}
           variant="contained"
-          onClick={handleCadastro}
+          onClick={adicionarProfessor}
         >
           Cadastrar
         </Button>
